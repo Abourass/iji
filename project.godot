@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="iji"
-run/main_scene="res://Player.tscn"
+config/version="0.0.3"
+run/main_scene="res://scenes/levels/level_01.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +20,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=480
 window/size/viewport_height=720
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 
 [dotnet]

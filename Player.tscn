@@ -201,9 +201,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2igx4")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle",
-"speed": 16.0
+"speed": 22.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -286,7 +286,7 @@ animations = [{
 radius = 12.0
 height = 52.0
 
-[node name="Player" type="RigidBody2D"]
+[node name="Player" type="CharacterBody2D"]
 position = Vector2(196, 138)
 script = ExtResource("1_o5wui")
 metadata/_edit_group_ = true

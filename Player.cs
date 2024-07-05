@@ -20,10 +20,20 @@ public partial class Player: CharacterBody2D {
 
 	public override void _PhysicsProcess(double delta){
 		var Delta = ConversionHelper.toFloat(delta);
+		// vertical movement velocity (down)
+	_velocity.Y += Gravity * Delta;
 		ProcessInput();
 		ApplyGravity(ConversionHelper.toFloat(Delta));
 		MoveCharacter(Delta);
 	}
+
+	private void HorizontalMovement(){
+		// if keys are pressed it will return 1 for ui_right, -1 for ui_left, and 0 for neither
+		var horiz_input = Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left");
+		// Normalize direction and scale by speed
+		_velocity.X = horiz_input * Speed;
+	}
+
 	
 	private void ProcessInput(){
 		var direction = new Vector2();
@@ -85,11 +95,6 @@ public partial class Player: CharacterBody2D {
 			_velocity.Y = -500;
 			_isJumping = true;
 		}
-	}
-
-	private void HorizontalMovement(float delta){
-		// Move
-
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

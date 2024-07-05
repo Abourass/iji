@@ -2,9 +2,13 @@ using Godot;
 using System;
 using Iji.Utilities;
 
-public partial class Player: RigidBody2D {
+public partial class Player: CharacterBody2D {
 	[Export]
 	public float Speed { get; set; } = 300f; // How fast the player will move
+
+	[Export]
+	public float Gravity { get; set; } = 200f; // How fast the player will fall
+
 	public Vector2 _velocity = new Vector2(0, 0); // Current Velocity
 	private bool _isJumping = false; 
 	public Vector2 ScreenSize; // Size of the game window
@@ -23,18 +27,10 @@ public partial class Player: RigidBody2D {
 	
 	private void ProcessInput(){
 		var direction = new Vector2();
-		
-		if (Input.IsActionPressed("move_right")){
-			direction.X += 1; 
-		} else if (Input.IsActionPressed("move_left")){
-			direction.X -= 1;
-		}
 
-		if (Input.IsActionPressed("move_down")){
-			direction.Y += 1;
-		} else if (Input.IsActionPressed("move_up")){
-			direction.Y -= 1;
-		}
+		// if keys are pressed it will return 1 for ui_right, -1 for ui_left, and 0 for neither
+		direction.X = Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left");
+		direction.Y = Input.GetActionStrength("move_down") - Input.GetActionStrength("move_up");
 
 		// Normalize direction and scale by speed
 		direction = direction.Normalized() * Speed;
@@ -79,12 +75,6 @@ public partial class Player: RigidBody2D {
 		newPosition.X = Mathf.Clamp(newPosition.X, 0, ScreenSize.X);
 		newPosition.Y = Mathf.Clamp(newPosition.Y, 0, ScreenSize.Y);
 
-		// Check if we collide with walls, if so, don't move
-		if (collisionShape.GetNode<Area2D>("Area2D").GetOverlappingBodies().Count > 0){
-			_velocity = new Vector2(0, 0);
-			_isJumping = false;
-		}
-
 
 		// Set the new position
 		Position = newPosition;
@@ -95,6 +85,11 @@ public partial class Player: RigidBody2D {
 			_velocity.Y = -500;
 			_isJumping = true;
 		}
+	}
+
+	private void HorizontalMovement(float delta){
+		// Move
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

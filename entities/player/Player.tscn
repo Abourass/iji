@@ -1,6 +1,6 @@
 [gd_scene load_steps=44 format=3 uid="uid://c53mkawlubamn"]
 
-[ext_resource type="Script" path="res://Player.cs" id="1_o5wui"]
+[ext_resource type="Script" path="res://entities/player/Player.cs" id="1_o5wui"]
 [ext_resource type="Texture2D" uid="uid://htryad8shmcs" path="res://art/noBKG_KnightJumpAndFall_strip.png" id="1_phdrf"]
 [ext_resource type="Texture2D" uid="uid://bn33ohxo3wfoa" path="res://art/noBKG_KnightRun_strip.png" id="2_go62f"]
 [ext_resource type="Texture2D" uid="uid://dkln7dkvob3ak" path="res://art/noBKG_KnightIdle_strip.png" id="2_l8cdq"]
@@ -285,17 +285,19 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emksk"]
 size = Vector2(20, 30)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="Area2D"]
 position = Vector2(195, 138)
-floor_stop_on_slope = false
-platform_wall_layers = 1
 script = ExtResource("1_o5wui")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5ceb6")
 animation = &"idle"
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -3)
 shape = SubResource("RectangleShape2D_emksk")
+metadata/_edit_group_ = true
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

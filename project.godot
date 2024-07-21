@@ -12,9 +12,9 @@ config_version=5
 
 config/name="iji"
 config/version="0.0.3"
-run/main_scene="res://scenes/levels/level_01.tscn"
+run/main_scene="res://scenes/Main.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://art/icon.svg"
 
 [display]
 

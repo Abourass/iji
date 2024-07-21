@@ -2,21 +2,31 @@ using Godot;
 using System;
 using Iji.Utilities;
 
-public partial class Player: CharacterBody2D {
-	[Export]
-	public float Speed { get; set; } = 300f; // How fast the player will move
+public partial class Player: Area2D {
+	[Signal]
+	public delegate void HitEventHandler();
 
 	[Export]
-	public float Gravity { get; set; } = 200f; // How fast the player will fall
+	public float Speed { get; set; } = 300f; // How fast the player will move
 
 	[Export]
 	public float JumpForce { get; set; } = 300f; // How high the player will jump
 
 	public Vector2 ScreenSize; // Size of the game window
 
+		// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta) {
+	}
+
+	public void Start(Vector2 pos){
+		Position = pos;
+		Show();
+		GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled, false);
+	}
+
 	private AnimatedSprite2D PlayerSprite; // Reference to the AnimatedSprite2D node
 	private bool _isJumping = false;
-	private Vector2 _velocity = new Vector2();
+	private Vector2 _velocity = new();
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
@@ -37,12 +47,12 @@ public partial class Player: CharacterBody2D {
 		ProcessInput(Delta);
 	}
 
-	private float getHorizontalInput(){
+	private static float GetHorizontalInput(){
 		return Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left");
 	}
 
 	private void ProcessInput(float delta){
-		Vector2 direction = new Vector2();
+		Vector2 direction = new();
 
 		if ( // Check for jump
 				Input.GetActionStrength("move_up") > 0
@@ -81,7 +91,7 @@ public partial class Player: CharacterBody2D {
 		newPosition.Y = Mathf.Clamp(newPosition.Y, 0, ScreenSize.Y);
 
 		// Move the player
-		MoveAndSlide();
+		Position = newPosition;
 
 				// Flip the sprite based on direction
 		if (_velocity.X != 0){
@@ -99,10 +109,13 @@ public partial class Player: CharacterBody2D {
 
 	// Use this method to reset jumping state when the player lands
   private void _on_Player_body_entered(Node body){
-	_isJumping = false;
+		_isJumping = false;
   }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta) {
+	private void OnBodyEntered(Node2D body){
+		Hide(); // Disappear on being hit for now
+		EmitSignal(SignalName.Hit);
+		// Must be deferred as we can't change physics properties on a physics callback.
+    GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
 	}
 }

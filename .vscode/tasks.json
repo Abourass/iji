@@ -1,0 +1,18 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "command": "/home/navi/Downloads/Godot/Godot.x86_64",
+      "type": "process",
+      "args": [
+        "--build-solutions",
+        "--path",
+        "${workspaceRoot}",
+        "--headless",
+        "-q"
+      ],
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

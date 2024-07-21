@@ -9,93 +9,98 @@ public partial class Player: CharacterBody2D {
 	[Export]
 	public float Gravity { get; set; } = 200f; // How fast the player will fall
 
-	public Vector2 _velocity = new Vector2(0, 0); // Current Velocity
-	private bool _isJumping = false; 
+	[Export]
+	public float JumpForce { get; set; } = 300f; // How high the player will jump
+
 	public Vector2 ScreenSize; // Size of the game window
+
+	private AnimatedSprite2D PlayerSprite; // Reference to the AnimatedSprite2D node
+	private bool _isJumping = false;
+	private Vector2 _velocity = new Vector2();
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready() {
 		ScreenSize = GetViewportRect().Size;
+		PlayerSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+		PlayerSprite.Play("idle");
+	}
+
+	// This method is used to detect when direction has stopped, to play the idle animation
+	private void _on_Player_idle(){
+		PlayerSprite.Play("idle");
+		// Dim the screen slightly when the player is idle
+		PlayerSprite.Modulate = new Color(0.5f, 0.5f, 0.5f);
 	}
 
 	public override void _PhysicsProcess(double delta){
 		var Delta = ConversionHelper.toFloat(delta);
-		// vertical movement velocity (down)
-	_velocity.Y += Gravity * Delta;
-		ProcessInput();
-		ApplyGravity(ConversionHelper.toFloat(Delta));
-		MoveCharacter(Delta);
+		ProcessInput(Delta);
 	}
 
-	private void HorizontalMovement(){
-		// if keys are pressed it will return 1 for ui_right, -1 for ui_left, and 0 for neither
-		var horiz_input = Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left");
-		// Normalize direction and scale by speed
-		_velocity.X = horiz_input * Speed;
+	private float getHorizontalInput(){
+		return Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left");
 	}
 
-	
-	private void ProcessInput(){
-		var direction = new Vector2();
+	private void ProcessInput(float delta){
+		Vector2 direction = new Vector2();
 
-		// if keys are pressed it will return 1 for ui_right, -1 for ui_left, and 0 for neither
+		if ( // Check for jump
+				Input.GetActionStrength("move_up") > 0
+				&& _isJumping == false
+			){
+			_isJumping = true;
+			_velocity.Y = -JumpForce;
+		}
+
+		/**
+		 * This is a simple way to get the direction the player is moving.
+		 * It will return a value between -1 and 1.
+		 * If the player is moving right, it will return 1.
+		 * If the player is moving left, it will return -1.
+		 * If the player is not moving, it will return 0.
+		 * ------------
+		 * Then we normalize the direction and multiply it by the speed.
+		 * This will give us a vector that we can use to move the player.
+		 */
 		direction.X = Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left");
-		direction.Y = Input.GetActionStrength("move_down") - Input.GetActionStrength("move_up");
-
-		// Normalize direction and scale by speed
 		direction = direction.Normalized() * Speed;
-		// Update velocity based on input
 		_velocity.X = Mathf.Lerp(_velocity.X, direction.X, 0.1f);
-		_velocity.Y = Mathf.Lerp(_velocity.Y, direction.Y, 0.1f);
-		
-		// Change animation based on input
-		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-		if (direction.Length() > 0){
-			animatedSprite2D.Play("walk"); // Play walk animation if moving
-		} else {
-			animatedSprite2D.Stop(); // Stop animation if not moving
-		}
 
-		// Flip the sprite based on direction
-		if (_velocity.X != 0){
-			animatedSprite2D.Animation = "walk";
-			animatedSprite2D.FlipV = false;
-			// See the note below about boolean assignment.
-			animatedSprite2D.FlipH = _velocity.X < 0;
-		} else if (_velocity.Y != 0){
-			animatedSprite2D.Animation = "jump";
-			animatedSprite2D.FlipV = _velocity.Y > 0;
-		} else {
-			animatedSprite2D.Animation = "idle";
-		}
-	}
-
-	private void ApplyGravity(float delta){
 		// Apply gravity
-		_velocity.Y += 9.8f * delta;
-	}
+		if (!_isJumping || _velocity.Y < 0){
+			_velocity.Y += Gravity * delta;
+		}
 
-	private void MoveCharacter(float delta){
-		// Move the player
-		// Manually move the player
+		// Move and Slide
+		// _velocity = MoveAndSlide(_velocity, Vector2.Up);
+
 		Vector2 newPosition = Position + _velocity * delta;
-		CollisionShape2D collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 
 		// Check if the new position is within the screen, if not clamp
 		newPosition.X = Mathf.Clamp(newPosition.X, 0, ScreenSize.X);
 		newPosition.Y = Mathf.Clamp(newPosition.Y, 0, ScreenSize.Y);
 
+		// Move the player
+		MoveAndSlide();
 
-		// Set the new position
-		Position = newPosition;
-	}
+				// Flip the sprite based on direction
+		if (_velocity.X != 0){
+			PlayerSprite.Play("walk");
+			PlayerSprite.FlipH = _velocity.X < 0;
+		} else if (_velocity.Y < 0 && _isJumping){
+			PlayerSprite.Play("jump");
+		}
 
-	private void _on_Player_jump(){
-		if (!_isJumping){
-			_velocity.Y = -500;
-			_isJumping = true;
+		// If they stop moving, play the idle animation
+		if (_velocity.X == 0 && _velocity.Y == 0){
+			PlayerSprite.Play("idle");
 		}
 	}
+
+	// Use this method to reset jumping state when the player lands
+  private void _on_Player_body_entered(Node body){
+	_isJumping = false;
+  }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta) {

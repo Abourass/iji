@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvwui2itxnc42"]
+[gd_scene load_steps=4 format=3 uid="uid://bvwui2itxnc42"]
 
 [ext_resource type="Script" path="res://scenes/HUD.cs" id="1_his1s"]
 [ext_resource type="FontFile" uid="uid://dmya2nstt53k6" path="res://fonts/Xolonium-Regular.ttf" id="1_mlfyh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uy6qp"]
+font = ExtResource("1_mlfyh")
+font_size = 50
+font_color = Color(1, 0.270588, 0.254902, 1)
+outline_size = 1
+outline_color = Color(0.0605303, 0.0605303, 0.0605303, 1)
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_his1s")
@@ -19,6 +26,17 @@ theme_override_font_sizes/font_size = 64
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HealthLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -135.0
+offset_bottom = 61.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+text = "♥♥♥"
+label_settings = SubResource("LabelSettings_uy6qp")
 
 [node name="Message" type="Label" parent="."]
 anchors_preset = 8

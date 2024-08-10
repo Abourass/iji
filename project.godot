@@ -20,8 +20,8 @@ config/icon="res://art/icon.svg"
 
 window/size/viewport_width=480
 window/size/viewport_height=720
-window/size/resizable=false
-window/stretch/mode="canvas_items"
+window/size/mode=2
+window/stretch/mode="viewport"
 
 [dotnet]
 
@@ -63,3 +63,7 @@ move_down={
 2d_physics/layer_1="Floor"
 2d_physics/layer_2="Ceiling"
 2d_physics/layer_3="Wall"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

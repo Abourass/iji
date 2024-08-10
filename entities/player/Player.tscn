@@ -285,7 +285,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emksk"]
 size = Vector2(20, 30)
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="CharacterBody2D"]
 position = Vector2(195, 138)
 script = ExtResource("1_o5wui")
 metadata/_edit_group_ = true
@@ -299,5 +299,3 @@ metadata/_edit_group_ = true
 position = Vector2(1, -3)
 shape = SubResource("RectangleShape2D_emksk")
 metadata/_edit_group_ = true
-
-[connection signal="body_entered" from="." to="." method="OnBodyEntered"]

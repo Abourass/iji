@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://77tbig3vpmg6"
+path="res://.godot/imported/Confronting The Man In Black.ogg-1d6b15a4539525c11a7f102c9692e1fb.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/FX/Music/Wild West Music - Harvey Carman/Wild West Music - Harvey Carman/OGG/Confronting The Man In Black.ogg"
+dest_files=["res://.godot/imported/Confronting The Man In Black.ogg-1d6b15a4539525c11a7f102c9692e1fb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

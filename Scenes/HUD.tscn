@@ -1,0 +1,81 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvwui2itxnc42"]
+
+[ext_resource type="Script" path="res://Scenes/HUD.cs" id="1_his1s"]
+[ext_resource type="FontFile" path="res://fonts/Xolonium-Regular.ttf" id="1_mlfyh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uy6qp"]
+font = ExtResource("1_mlfyh")
+font_size = 50
+font_color = Color(1, 0.270588, 0.254902, 1)
+outline_size = 1
+outline_color = Color(0.0605303, 0.0605303, 0.0605303, 1)
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_his1s")
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -22.5
+offset_right = 22.5
+offset_bottom = 78.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_mlfyh")
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -135.0
+offset_bottom = 61.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+text = "♥♥♥"
+label_settings = SubResource("LabelSettings_uy6qp")
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -136.0
+offset_right = 208.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_mlfyh")
+theme_override_font_sizes/font_size = 52
+text = "Good Luck!
+Don't let them touch you.."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_mlfyh")
+theme_override_font_sizes/font_size = 52
+text = "Start"
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="StartButton" to="." method="OnStartButtonPressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="OnMessageTimerTimeout"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bp87joi6piks6"
+path="res://.godot/imported/Whiskey Barn Dance (loop).mp3-a65204bb0386a9a17e5c20cc0f3475c6.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Wild West Music - Harvey Carman/MP3/Whiskey Barn Dance (loop).mp3"
+dest_files=["res://.godot/imported/Whiskey Barn Dance (loop).mp3-a65204bb0386a9a17e5c20cc0f3475c6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

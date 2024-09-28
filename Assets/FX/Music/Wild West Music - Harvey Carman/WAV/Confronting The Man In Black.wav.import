@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bxm78rbgjo3wj"
+path="res://.godot/imported/Confronting The Man In Black.wav-2f9fe7c56419e5d3efffcec7d9ea3713.sample"
+
+[deps]
+
+source_file="res://Assets/FX/Music/Wild West Music - Harvey Carman/WAV/Confronting The Man In Black.wav"
+dest_files=["res://.godot/imported/Confronting The Man In Black.wav-2f9fe7c56419e5d3efffcec7d9ea3713.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

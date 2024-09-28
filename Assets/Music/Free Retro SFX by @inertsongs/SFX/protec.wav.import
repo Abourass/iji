@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dnxqacwayjuwh"
+path="res://.godot/imported/protec.wav-2a194388d41ee954a199a4cf7c95fb5c.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Free Retro SFX by @inertsongs/SFX/protec.wav"
+dest_files=["res://.godot/imported/protec.wav-2a194388d41ee954a199a4cf7c95fb5c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

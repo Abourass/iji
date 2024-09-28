@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://satdygjdxyeu"
+path="res://.godot/imported/Whiskey Barn Dance (loop).wav-5b644dfff692b5ce2159697e938aa50a.sample"
+
+[deps]
+
+source_file="res://Assets/FX/Music/Wild West Music - Harvey Carman/Wild West Music - Harvey Carman/WAV/Whiskey Barn Dance (loop).wav"
+dest_files=["res://.godot/imported/Whiskey Barn Dance (loop).wav-5b644dfff692b5ce2159697e938aa50a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

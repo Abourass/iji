@@ -1,0 +1,3 @@
+Container size: 112 x 40
+Sidebar Container size: 22 x 76
+Slot size: 16 x 16

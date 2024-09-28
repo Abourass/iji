@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b3e7rlw48qifl"
+path="res://.godot/imported/end.wav-772d8f49461bc4542391297192638600.sample"
+
+[deps]
+
+source_file="res://Assets/FX/Music/Free Retro SFX by @inertsongs/SFX/end.wav"
+dest_files=["res://.godot/imported/end.wav-772d8f49461bc4542391297192638600.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

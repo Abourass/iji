@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dtxlca7mvus0k"
+path="res://.godot/imported/We Ride At Dawn! (loop).ogg-3ee9c6712f788a771cf179bf72827731.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/FX/Music/Wild West Music - Harvey Carman/OGG/We Ride At Dawn! (loop).ogg"
+dest_files=["res://.godot/imported/We Ride At Dawn! (loop).ogg-3ee9c6712f788a771cf179bf72827731.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bryao452hl376"
+path="res://.godot/imported/We Ride At Dawn! (loop).mp3-5bed5ed5b7b953af59ad06102309a3cf.mp3str"
+
+[deps]
+
+source_file="res://Assets/FX/Music/Wild West Music - Harvey Carman/MP3/We Ride At Dawn! (loop).mp3"
+dest_files=["res://.godot/imported/We Ride At Dawn! (loop).mp3-5bed5ed5b7b953af59ad06102309a3cf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

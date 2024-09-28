@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://crhqn7pr3js2m"
+path="res://.godot/imported/Too Late To Save The Town.mp3-d955f6670206427123dcbf48e409e4f2.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/Wild West Music - Harvey Carman/MP3/Too Late To Save The Town.mp3"
+dest_files=["res://.godot/imported/Too Late To Save The Town.mp3-d955f6670206427123dcbf48e409e4f2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

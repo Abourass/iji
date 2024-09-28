@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b52j54b34m3q3"
+path="res://.godot/imported/Too Late To Save The Town.wav-79916b2d87da9049973ca65959c36534.sample"
+
+[deps]
+
+source_file="res://Assets/FX/Music/Wild West Music - Harvey Carman/Wild West Music - Harvey Carman/WAV/Too Late To Save The Town.wav"
+dest_files=["res://.godot/imported/Too Late To Save The Town.wav-79916b2d87da9049973ca65959c36534.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

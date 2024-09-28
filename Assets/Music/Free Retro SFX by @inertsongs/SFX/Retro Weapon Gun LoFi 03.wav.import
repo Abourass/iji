@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bymn001xnh2ph"
+path="res://.godot/imported/Retro Weapon Gun LoFi 03.wav-7056ce0448221f0fc16e3d96202bb3ff.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Free Retro SFX by @inertsongs/SFX/Retro Weapon Gun LoFi 03.wav"
+dest_files=["res://.godot/imported/Retro Weapon Gun LoFi 03.wav-7056ce0448221f0fc16e3d96202bb3ff.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

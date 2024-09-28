@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dof3ukai2i6bf"
+path="res://.godot/imported/Whiskey Barn Dance (loop).ogg-640f89ecb9c81d47a60c567715b372fa.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Music/Wild West Music - Harvey Carman/Wild West Music - Harvey Carman/OGG/Whiskey Barn Dance (loop).ogg"
+dest_files=["res://.godot/imported/Whiskey Barn Dance (loop).ogg-640f89ecb9c81d47a60c567715b372fa.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
